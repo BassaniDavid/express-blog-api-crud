@@ -3,7 +3,22 @@ const posts = require('../data/posts')
 
 //funzione index
 function index (req,res) {
-    res.json(posts)
+
+    let filterTag = posts
+
+    if(req.query.tag){
+        filterTag = posts.filter( element => element.tags.includes(req.query.tag))
+    }
+
+    if(filterTag.length <= 0){
+        res.status(404)
+
+        return res.json({
+            error: "not found",
+            message: "tag del post non trovato"
+        })
+    }
+    res.json(filterTag)
 }
 
 //funzione show
