@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const postsController = require('../controllers/postsController')
-router.use(express.json())
+
 
 // index
 router.get('/', postsController.index)
