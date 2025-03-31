@@ -1,16 +1,17 @@
 
 const posts = require('../data/posts')
 
+
 //funzione index
-function index (req,res) {
+function index(req, res) {
 
     let filterTag = posts
 
-    if(req.query.tag){
-        filterTag = posts.filter( element => element.tags.includes(req.query.tag))
+    if (req.query.tag) {
+        filterTag = posts.filter(element => element.tags.includes(req.query.tag))
     }
 
-    if(filterTag.length <= 0){
+    if (filterTag.length <= 0) {
         res.status(404)
 
         return res.json({
@@ -22,11 +23,11 @@ function index (req,res) {
 }
 
 //funzione show
-function show (req,res) {
+function show(req, res) {
 
     const post = posts.find((element) => element.title === req.params.id)
 
-    if(!post) {
+    if (!post) {
 
         res.status(404)
 
@@ -40,25 +41,42 @@ function show (req,res) {
 }
 
 //funzione store
-function store (req,res) {
-    res.send('creazione nuovo post')
+function store(req, res) {
+
+    const newId = posts[posts.length - 1].id + 1
+
+    const newPost = {
+        id: newId,
+        title: req.body.title,
+        content: req.body.content,
+        image: req.body.image,
+        tags: req.body.tags
+    }
+
+    posts.push(newPost);
+
+    console.log(posts);
+    
+    res.status(201);
+
+    res.json(newPost);
 }
 
 //funzione update
-function update (req,res) {
-    res.send('modifica integrale del post '+ req.params.id)
+function update(req, res) {
+    res.send('modifica integrale del post ' + req.params.id)
 }
 
 //funzione modify
-function modify (req,res) {
-    res.send('modifica parziale del post '+ req.params.id)
+function modify(req, res) {
+    res.send('modifica parziale del post ' + req.params.id)
 }
 
 //funzione destroy
-function destroy (req,res) {
+function destroy(req, res) {
     const post = posts.find((element) => element.title === req.params.id)
 
-    if(!post) {
+    if (!post) {
 
         res.status(404)
 
@@ -75,4 +93,4 @@ function destroy (req,res) {
     res.sendStatus(204)
 }
 
-module.exports = { index, show, store, update, modify, destroy}
+module.exports = { index, show, store, update, modify, destroy }
