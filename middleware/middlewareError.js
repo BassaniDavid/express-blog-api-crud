@@ -1,3 +1,4 @@
+// funzione per middleware in caso di errore
 function errorHandler (err, req, res, next) {
     console.log('se ci sono degli errori, il middleware funziona')
 
@@ -7,4 +8,5 @@ function errorHandler (err, req, res, next) {
     })
 }
 
+// esporto funzione, che importo in app.js
 module.exports = errorHandler

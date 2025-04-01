@@ -1,7 +1,13 @@
+// importo express
 const express = require('express')
+
+// invoco express
 const router = express.Router()
+
+// importo le funzioni da controller
 const postsController = require('../controllers/postsController')
 
+// rotte per ogni verbo
 
 // index
 router.get('/', postsController.index)
@@ -21,4 +27,6 @@ router.patch('/:id', postsController.modify)
 // destroy
 router.delete('/:id', postsController.destroy)
 
+
+// esporto router, (lo importo in app.js)
 module.exports = router

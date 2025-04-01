@@ -1,3 +1,4 @@
+// funzione per middleware in caso di rotta inesistente
 function notFound (req, res, next) {
     console.log('se il percorso è sbagliato, il middleware funziona')
 
@@ -8,4 +9,5 @@ function notFound (req, res, next) {
     })
 }
 
+// esporto funzione, che importo in app.js
 module.exports = notFound

@@ -44,4 +44,5 @@ const posts = [
   },
 ];
 
+// esporto l array di oggetti che costituiscono i post, che importo in controllers
 module.exports = posts;

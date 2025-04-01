@@ -1,6 +1,7 @@
-
+// importo l array di oggetti dal file in data
 const posts = require('../data/posts')
 
+// funzioni per ogni verbo delle route
 
 //funzione index
 function index(req, res) {
@@ -115,4 +116,5 @@ function destroy(req, res) {
     res.sendStatus(204)
 }
 
+// esporto le funzioni, che importo in router
 module.exports = { index, show, store, update, modify, destroy }
